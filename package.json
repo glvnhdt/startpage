@@ -1,0 +1,19 @@
+{
+  "name": "startpage",
+  "version": "0.0.1",
+  "description": "Startpage with usefull information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glvnhdt/startpage.git"
+  },
+  "author": "glvnhdt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glvnhdt/startpage/issues"
+  },
+  "homepage": "https://github.com/glvnhdt/startpage#readme"
+}
