@@ -1,8 +1,10 @@
-doctype html
+extends ../node_modules/pug-bootstrap/_bootstrap
+include mixins
 
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+block body
+  .container
+    h1 Het is nu #{time}
+    .row
+      .col-md-4.col-sm-6.col-xs-12
+        button(href='https://www.outlook.ae.be') Outlook AE
+      block row
