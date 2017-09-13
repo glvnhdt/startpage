@@ -12,9 +12,7 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 
-exports.process_new_message = function(req, res) {
-  res.send('not implemented yet');
-}
+exports.process_new_message = connector.listen();
 
 // Receive messages from the user and respond.
 var bot = new builder.UniversalBot(connector, function (session) {

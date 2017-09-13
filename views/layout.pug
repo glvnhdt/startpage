@@ -6,5 +6,18 @@ block body
     h1 Het is nu #{time}
     .row
       .col-md-4.col-sm-6.col-xs-12
-        button(href='https://www.outlook.ae.be') Outlook AE
+        +button("default","http://outlook.ae.be") Outlook AE
+        br
+        +button() Eni Wiki
+        br
+        +button("default", "https://aewiki.atlassian.net/wiki/display/AE") AE Wiki
+        br
+        h4 Muziek:
+        +button("default", "http://radioplus.be/#/stubru", "small") StuBru
+        +button("default", "http://radioplus.be/#/mnm-hits", "small") MNM hits
+        +button("default", "http://remixrotation.com", "small") Remix rotation
+        h4 Ontspanning:
+        +button("default", "http://standaard.be", "small") De standaard
+        +button("default", "http://tweakers.be", "small") Tweakers
+        +button("default", "https://github.com/glvnhdt", "small") Github
       block row
