@@ -1,20 +1,27 @@
-# startpage
+# Startpage
 
-## to run the program:
-SET DEBUG=startpage:* & npm run devstart
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
-## screen tutorial
-https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/#video
-nice to know:
-* CTRL-a ? : help
-* screen -r : reattach
-* CTRL-a d : deattach
-* CTRL-a c : create new screen window
-* CTRL-a n : go to next screen window
+## Development server
 
-## handige links
-* https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes
-* https://expressjs.com/en/advanced/best-practice-security.html
-* https://declining-stork-1128.dataplicity.io/users
-* https://webdesign.tutsplus.com/tutorials/baking-bootstrap-snippets-with-jade--cms-22798
-* http://rajasegar.github.io/JADE-Bootstrap/getting-started.html
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

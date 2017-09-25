@@ -3,8 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var date = new Date();
-  res.render('index', { title: 'Startpage', time: date.getHours() + ":" + date.getMinutes() });
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 module.exports = router;
