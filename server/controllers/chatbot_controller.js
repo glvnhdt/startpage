@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const builder = require('botbuilder');
-const WitRecognizer = require('botbuilder-wit');
+const { WitRecognizer } = require('botbuilder-wit');
 // Create chat connector for communicating with the Bot Framework Service
 const connector = new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
@@ -11,7 +11,7 @@ const connector = new builder.ChatConnector({
 // Receive messages from the user and respond.
 var bot = new builder.UniversalBot(connector, function (session) {
     console.log("you said: " , session.message.text);
-    session.send("Hallo, ik ben Alfred. Wat kan ik voor je doen?");
+    session.send(JSON.stringify(session));
 });
 
 bot.recognizer(new WitRecognizer(process.env.WIT_ACCESS_TOKEN));
