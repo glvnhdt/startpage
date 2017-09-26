@@ -20,28 +20,32 @@ bot.dialog('/verkeer', [
   function(session, args, next) {
     // Resolve and store any entities passed from LUIS.
     var intent = args.intent;
-    var location = builder.EntityRecognizer.findEntity(intent.entities, 'wit/location');
-    var destination = builder.dialogData.destination = {
+    var location = builder.EntityRecognizer.findEntity(args.entities, 'location');
+    var destination = session.dialogData.dest = {
       location: location ? location.entity : null
     };
 
     // Prompt for title
-    if (!alarm.location) {
+    if (!destination.location) {
         builder.Prompts.text(session, 'Naar waar wil je?');
     } else {
-        next();
+        next({response: location});
     }
   },
-  function(session, results) {
-    var destination = builder.dialogData.destination;
+  function(session, args, results) {
+    var destination = session.dialogData.dest;
+    session.send('results');
+    session.send(JSON.stringify(results));
+    session.send('args');
+    session.send(JSON.stringify(args));
     if(results.response) {
-      destination.location = results.location;
+      destination.location = builder.EntityRecognizer.findEntity(args.entities, 'location');
     }
 
     session.endDialog('Het verkeer naar %s wordt opgezocht.', destination.location);
   }
 ]).triggerAction({
-  matches: 'intent/verkeer',
+  matches: 'verkeer',
   confirmPrompt: 'Dit is een confirmprompt'
 })
 
