@@ -11,7 +11,7 @@ const connector = new builder.ChatConnector({
 // Receive messages from the user and respond.
 var bot = new builder.UniversalBot(connector, function (session) {
     console.log("you said: " , session.message.text);
-    session.send(JSON.stringify(session));
+    session.send(JSON.stringify(session.message));
 });
 
 bot.recognizer(new WitRecognizer(process.env.WIT_ACCESS_TOKEN));
@@ -41,7 +41,7 @@ bot.dialog('/verkeer', [
     session.endDialog('Het verkeer naar %s wordt opgezocht.', destination.location);
   }
 ]).triggerAction({
-  matches: 'intent.verkeer',
+  matches: 'intent/verkeer',
   confirmPrompt: 'Dit is een confirmprompt'
 })
 
