@@ -14,7 +14,10 @@ var bot = new builder.UniversalBot(connector, function (session) {
     session.send(JSON.stringify(session.message));
 });
 
-bot.recognizer(new WitRecognizer(process.env.WIT_ACCESS_TOKEN));
+const witRecognizer = new WitRecognizer(process.env.WIT_ACCESS_TOKEN);
+bot.recognizer(witRecognizer);
+
+const WitClient = witRecognizer.witClient;
 
 bot.dialog('/verkeer', [
   function(session, args, next) {
@@ -29,20 +32,19 @@ bot.dialog('/verkeer', [
     if (!destination.location) {
         builder.Prompts.text(session, 'Naar waar wil je?');
     } else {
-        next({response: location});
+        next();
     }
   },
-  function(session, args, results) {
+  function(session, results) {
     var destination = session.dialogData.dest;
-    session.send('results');
-    session.send(JSON.stringify(results));
-    session.send('args');
-    session.send(JSON.stringify(args));
     if(results.response) {
-      destination.location = builder.EntityRecognizer.findEntity(args.entities, 'location');
+      WitClient.message(results.response, {})
+      .then((data) => {
+        destination.location = data.entities.location[0].value;
+        session.endDialog('Het verkeer naar %s wordt opgezocht.', destination.location);
+      })
+      .catch(console.error);
     }
-
-    session.endDialog('Het verkeer naar %s wordt opgezocht.', destination.location);
   }
 ]).triggerAction({
   matches: 'verkeer',
